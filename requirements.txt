@@ -1,0 +1,13 @@
+requests
+fastapi
+uvicorn
+python-multipart
+# FileResponse依赖
+aiofiles
+loguru
+langchain
+openai
+langchain_openai
+langserve
+faiss-cpu
+sse_starlette
