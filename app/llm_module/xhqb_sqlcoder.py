@@ -29,6 +29,8 @@ from settings import XHQB_LOCAL_FILE_PATH
 def add_llm_module(app: FastAPI) -> None:
 
     # 在环境变量里获取OPENAI的key和代理
+    os.environ["OPENAI_API_KEY"] = os.environ["LJH_OPENAI_KEY"]
+    os.environ["OPENAI_API_BASE"] = os.environ["LJH_OPENAI_BASE"]
 
     loader = DirectoryLoader(f'{XHQB_LOCAL_FILE_PATH}/static/local_file', glob="**/*.txt", loader_cls=TextLoader, use_multithreading=True)
     docs = loader.load()
