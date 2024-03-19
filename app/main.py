@@ -14,7 +14,7 @@ from schema import VersionResp
 from exceptions import status, InternalException
 from init_app import init_app
 from llm_module.xhqb_sqlcoder import add_llm_module
-from local_file_module.router import router as test_router
+from local_file_module.router import router as file_router
 
 # 初始化app
 version = "1.0"     # 系统版本号
@@ -25,7 +25,7 @@ app = init_app(version=version, title=title, description=description, debug=DEBU
 add_llm_module(app)
 
 # 加载本地知识文件管理
-app.include_router(test_router, prefix="/test", tags=["验证码模块"])
+app.include_router(file_router, prefix="/file", tags=["本地知识文件模块"])
 
 # 跨域问题
 """

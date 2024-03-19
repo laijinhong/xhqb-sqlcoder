@@ -32,7 +32,7 @@ def add_llm_module(app: FastAPI) -> None:
     os.environ["OPENAI_API_KEY"] = os.environ["LJH_OPENAI_KEY"]
     os.environ["OPENAI_API_BASE"] = os.environ["LJH_OPENAI_BASE"]
 
-    loader = DirectoryLoader(f'{XHQB_LOCAL_FILE_PATH}/static/local_file', glob="**/*.txt", loader_cls=TextLoader, use_multithreading=True)
+    loader = DirectoryLoader(f'{XHQB_LOCAL_FILE_PATH}', glob="**/*.txt", loader_cls=TextLoader, use_multithreading=True)
     docs = loader.load()
     text_splitter = RecursiveCharacterTextSplitter()
     documents = text_splitter.split_documents(docs)
