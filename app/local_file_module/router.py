@@ -7,6 +7,7 @@
 # from typing import Dict
 import os.path
 import sys
+import re
 
 from fastapi import APIRouter, UploadFile, File
 from fastapi.exceptions import RequestValidationError
@@ -27,6 +28,9 @@ async def upload_file(file: UploadFile = File(...)):
     file_location = f"{XHQB_LOCAL_FILE_PATH}/{file.filename}"
     if os.path.isfile(file_location):
         raise RequestValidationError(errors=[f"文件名{file.filename}已存在"])
+    match = re.search(r".*\.txt", file.filename)
+    if not match:
+        raise RequestValidationError(errors=["只支持txt文件格式"])
     with open(file_location, "wb+") as file_object:
         file_object.write(file.file.read())
 

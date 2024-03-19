@@ -24,7 +24,7 @@ app = init_app(version=version, title=title, description=description, debug=DEBU
 # 挂载slqcoder模块
 add_llm_module(app)
 
-# 加载本地知识文件管理
+# 加载本地知识文件模块
 app.include_router(file_router, prefix="/file", tags=["本地知识文件模块"])
 
 # 跨域问题
